@@ -2,11 +2,13 @@ package com.dsi.reservart.models;
 
 public class Usuario {
     String nombre;
-    String contrasena;
+    String clave;
+    Boolean habilitado;
 
     public Usuario(String nom, String con) {
         this.nombre = nom;
-        this.contrasena = con;
+        this.clave = con;
+        this.habilitado = true;
     }
 
     public String getNombre() {
@@ -17,7 +19,9 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public boolean esContrasena(String contrasenaInput) {
-        return this.contrasena.equals(contrasenaInput);
+    public boolean esClave(String claveInput) {
+        return this.clave.equals(claveInput);
     }
+
+    public boolean esHabilitado() { return this.habilitado; }
 }
