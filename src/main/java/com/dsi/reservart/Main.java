@@ -38,7 +38,7 @@ public class Main {
 
         ArrayList<RecursoTecnologico> recursosTecnologicos2 = new ArrayList<>(Arrays.asList(
                 new RecursoTecnologico(3,tiposRT.get(1),modelos1.get(2)),
-                new RecursoTecnologico(4,tiposRT.get(2),modelos1.get(3))
+                new RecursoTecnologico(4,tiposRT.get(1),modelos1.get(3))
         ));
 
         ArrayList<PersonalCientifico> cientificos1 = new ArrayList<>(Arrays.asList(
