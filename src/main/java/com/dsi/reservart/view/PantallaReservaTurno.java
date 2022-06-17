@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 public class PantallaReservaTurno {
     public void mostrarUsuarioActivo(ControladorReservaTurno controlador) {
-        System.out.println("  -- Sesion activa de usuario: " + controlador.obtenerNombreUsuarioActivo() + " --");
-        System.out.println();
+        System.out.println("  -- Sesion activa de usuario: " + controlador.obtenerNombreUsuarioActivo() + " --\n");
     }
 
     public void opReservaTurno(ControladorReservaTurno controlador, ArrayList<TipoRecursoTecnologico> tiposRT) {

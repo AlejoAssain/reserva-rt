@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class TipoRecursoTecnologico {
     private String nombre;
     private String descripcion;
-    public ArrayList<Caracteristica> caracteristicas;
+    public ArrayList<CaracteristicaRecurso> caracteristicas;
 
 
     public TipoRecursoTecnologico(String nom) {
@@ -28,11 +28,11 @@ public class TipoRecursoTecnologico {
         this.descripcion = descripcion;
     }
 
-    public ArrayList<Caracteristica> getCaracteristicas() {
+    public ArrayList<CaracteristicaRecurso> getCaracteristicas() {
         return caracteristicas;
     }
 
-    public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
+    public void setCaracteristicas(ArrayList<CaracteristicaRecurso> caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
 

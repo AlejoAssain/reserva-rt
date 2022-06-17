@@ -3,7 +3,6 @@ package com.dsi.reservart.controllers;
 import com.dsi.reservart.models.RecursoTecnologico;
 import com.dsi.reservart.models.Sesion;
 import com.dsi.reservart.models.TipoRecursoTecnologico;
-import com.dsi.reservart.models.Usuario;
 import com.dsi.reservart.view.PantallaReservaTurno;
 
 import java.sql.Array;
@@ -29,7 +28,5 @@ public class ControladorReservaTurno {
     public String obtenerNombreUsuarioActivo() {
         return this.activaSesion.getNombreUsuarioActivo();
     }
-
-
 
 }

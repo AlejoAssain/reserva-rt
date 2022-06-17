@@ -1,6 +1,6 @@
 package com.dsi.reservart.models;
 
-public class Caracteristica {
+public class CaracteristicaRecurso {
     private String nombre;
     private String descripcion;
 

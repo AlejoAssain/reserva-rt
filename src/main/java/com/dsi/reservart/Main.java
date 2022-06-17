@@ -1,6 +1,8 @@
 package com.dsi.reservart;
 
 import com.dsi.reservart.controllers.ControladorReservaTurno;
+import com.dsi.reservart.models.CentroDeInvestigacion;
+import com.dsi.reservart.models.RecursoTecnologico;
 import com.dsi.reservart.models.TipoRecursoTecnologico;
 import com.dsi.reservart.view.PantallaReservaTurno;
 
@@ -16,6 +18,19 @@ public class Main {
                 new TipoRecursoTecnologico("Balanza de precision"),
                 new TipoRecursoTecnologico("Microscopio de medicion")
         ));
+
+        ArrayList<RecursoTecnologico> recursosTecnologicos = new ArrayList<>(Arrays.asList(
+                // agregar recursos tecnologicos
+        ));
+
+        ArrayList<CentroDeInvestigacion> centrosDeInvestigacion = new ArrayList<>(Arrays.asList(
+                // agregar centros de investigacion
+        ));
+
+
+
+
+
 
         pantallaRT.mostrarUsuarioActivo(controladorRT);
 
