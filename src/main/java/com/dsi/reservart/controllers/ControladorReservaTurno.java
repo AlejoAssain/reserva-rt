@@ -22,11 +22,19 @@ public class ControladorReservaTurno {
 
     public void tipoRTSeleccionado(TipoRecursoTecnologico tipoRT) {
         this.tipoRTSeleccionado = tipoRT;
-
     }
 
     public String obtenerNombreUsuarioActivo() {
         return this.activaSesion.getNombreUsuarioActivo();
+    }
+
+    public void buscarRTDisponible(ArrayList<RecursoTecnologico> recursosTecnologicos) {
+        ArrayList<RecursoTecnologico> rtDisponibles = new ArrayList<>();
+        recursosTecnologicos.forEach((recurso) -> {
+            if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo()) {
+                recursosTecnologicos.add(recurso);
+            }
+        });
     }
 
 }

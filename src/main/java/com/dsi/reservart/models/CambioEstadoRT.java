@@ -5,8 +5,9 @@ public class CambioEstadoRT {
     String fechaHoraHasta;
     Estado estado;
 
-    public CambioEstadoRT() {
-        this.fechaHoraDesde = "17-06-2022 10:30";
-        this.estado = new Estado("disponible");
+    public CambioEstadoRT(String fhDesde, String fhHasta, Estado estado) {
+        this.fechaHoraDesde = fhDesde;
+        this.fechaHoraHasta = fhHasta;
+        this.estado = estado;
     }
 }

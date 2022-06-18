@@ -23,9 +23,9 @@ public class CentroDeInvestigacion {
     public ArrayList<RecursoTecnologico> recursosTecnologicos;
     public ArrayList<AsignacionDirectorCI> directores;
 
-    public CentroDeInvestigacion(ArrayList<AsignacionCientificoCI> cientificos, ArrayList<RecursoTecnologico> recursosTecnologicos) {
+    public CentroDeInvestigacion(String nom, ArrayList<AsignacionCientificoCI> cientificos) {
+        this.nombre = nom;
         this.cientificos = cientificos;
-        this.recursosTecnologicos = recursosTecnologicos;
     }
 
     public String getNombre() {

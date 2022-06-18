@@ -22,17 +22,31 @@ public class RecursoTecnologico {
             int num,
             TipoRecursoTecnologico tipoRT,
             Modelo modelo
+//            ArrayList<CambioEstadoRT> cambiosERT
     ) {
         this.numeroRT = num;
         this.tipoRecursoTecnologico = tipoRT;
-        this.cambiosEstadoRT = new ArrayList<>(Arrays.asList(
-
-        ));
-
-
+//        this.cambiosEstadoRT = cambiosERT;
     }
 
     public void generarTurnos() {
         
     }
+
+    public void setCentroDeInvestigacion(CentroDeInvestigacion ci) {
+        this.centroDeInvestigacion = ci;
+    }
+
+    public String getNombreCI() {
+        return this.centroDeInvestigacion.getNombre();
+    }
+
+    public Boolean esDeTipo(TipoRecursoTecnologico tipoRT) {
+        return this.tipoRecursoTecnologico.equals(tipoRT);
+    }
+
+    public Boolean esActivo() {
+        return true;
+    }
+
 }
