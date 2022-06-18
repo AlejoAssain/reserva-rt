@@ -1,9 +1,6 @@
 package com.dsi.reservart.controllers;
 
-import com.dsi.reservart.models.Estado;
-import com.dsi.reservart.models.RecursoTecnologico;
-import com.dsi.reservart.models.Sesion;
-import com.dsi.reservart.models.TipoRecursoTecnologico;
+import com.dsi.reservart.models.*;
 import com.dsi.reservart.view.PantallaReservaTurno;
 
 import java.util.ArrayList;
@@ -28,13 +25,17 @@ public class ControladorReservaTurno {
         return this.activaSesion.getNombreUsuarioActivo();
     }
 
-    public void buscarRTDisponible(ArrayList<RecursoTecnologico> recursosTecnologicos, Estado estadoActivo) {
+    public ArrayList<RecursoTecnologico> buscarRTDisponible(ArrayList<CentroDeInvestigacion> centrosDeInvestigacion, Estado estadoActivo) {
         ArrayList<RecursoTecnologico> rtDisponibles = new ArrayList<>();
-        recursosTecnologicos.forEach((recurso) -> {
-            if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo(estadoActivo)) {
-                rtDisponibles.add(recurso);//Aca vos los estabas añadiendo al Array de recursosTecnologicos, y creo que seria a rtDisponibles no?
-            }
+        centrosDeInvestigacion.forEach((centroI) -> {
+            centroI.recursosTecnologicos.forEach((recurso) -> {
+                if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo(estadoActivo)) {
+                    rtDisponibles.add(recurso);//Aca vos los estabas añadiendo al Array de recursosTecnologicos, y creo que seria a rtDisponibles no?
+                }
+            });
         });
+
+        return rtDisponibles;
 
     }
 
