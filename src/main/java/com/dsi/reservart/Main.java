@@ -60,10 +60,10 @@ public class Main {
         ));
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(
-                new PersonalCientifico(),
-                new PersonalCientifico(),
-                new PersonalCientifico(),
-                new PersonalCientifico()
+                new PersonalCientifico("víctormendizabal@gmail.com"),
+                new PersonalCientifico("pepitamontserrat@gmail.com"),
+                new PersonalCientifico("clarisalobo@gmail.com"),
+                new PersonalCientifico("rafaelrocamora@gmail.com")
         ));
 
         ArrayList<AsignacionCientificoCI> asignacionesCientificos = new ArrayList<>(Arrays.asList(

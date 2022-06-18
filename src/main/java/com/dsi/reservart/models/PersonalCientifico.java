@@ -12,7 +12,11 @@ public class PersonalCientifico
    private String correoElectronicoPersonal;
    private int telefonoCelular;
    public Usuario usuario;
-   
+
+    public PersonalCientifico(String correoElectronicoPersonal) {
+        this.correoElectronicoPersonal = correoElectronicoPersonal;
+    }
+
     public int getLegajo() {
         return legajo;
     }

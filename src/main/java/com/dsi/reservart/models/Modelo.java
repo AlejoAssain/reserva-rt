@@ -7,18 +7,18 @@ public class Modelo {
         this.nombre = nombreModelo;
     }
 
-    @Override
-    public String toString() {
-        return "Modelo{" +
-                "nombre='" + nombre + '\'' +
-                '}';
-    }
-
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Modelo{" +
+                "nombre='" + nombre + '\'' +
+                '}';
     }
 }

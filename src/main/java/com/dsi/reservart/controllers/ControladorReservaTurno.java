@@ -35,6 +35,7 @@ public class ControladorReservaTurno {
                 rtDisponibles.add(recurso);//Aca vos los estabas añadiendo al Array de recursosTecnologicos, y creo que seria a rtDisponibles no?
             }
         });
+
     }
 
 }
