@@ -4,11 +4,13 @@ public class Usuario {
     String nombre;
     String clave;
     Boolean habilitado;
+    PersonalCientifico personalCientifico;
 
-    public Usuario(String nom, String con) {
+    public Usuario(String nom, String con, PersonalCientifico cientifico) {
         this.nombre = nom;
         this.clave = con;
         this.habilitado = true;
+        this.personalCientifico = cientifico;
     }
 
     public String getNombre() {
@@ -24,4 +26,8 @@ public class Usuario {
     }
 
     public boolean esHabilitado() { return this.habilitado; }
+
+    public PersonalCientifico getCientifico() {
+        return this.personalCientifico;
+    }
 }

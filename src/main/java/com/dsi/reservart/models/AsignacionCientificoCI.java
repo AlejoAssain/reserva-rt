@@ -4,10 +4,10 @@ public class AsignacionCientificoCI
 {
    private String fechaDesde;
    private String fechaHasta;
-   public PersonalCientifico thePersonalCientifico;
+   public PersonalCientifico personalCientifico;
 
     public AsignacionCientificoCI(PersonalCientifico thePersonalCientifico) {
-        this.thePersonalCientifico = thePersonalCientifico;
+        this.personalCientifico = thePersonalCientifico;
     }
 
     public void setFechaDesde(String fechaDesde) {
@@ -18,8 +18,8 @@ public class AsignacionCientificoCI
         this.fechaHasta = fechaHasta;
     }
 
-    public void setThePersonalCientifico(PersonalCientifico thePersonalCientifico) {
-        this.thePersonalCientifico = thePersonalCientifico;
+    public void setPersonalCientifico(PersonalCientifico personalCientifico) {
+        this.personalCientifico = personalCientifico;
     }
 
     public String getFechaDesde() {
@@ -30,19 +30,17 @@ public class AsignacionCientificoCI
         return fechaHasta;
     }
 
-    public PersonalCientifico getThePersonalCientifico() {
-        return thePersonalCientifico;
+    public PersonalCientifico getPersonalCientifico() {
+        return personalCientifico;
     }
    
 
-   public void esCientificoActivo() 
-   {
-    
+   public Boolean esCientificoActivoDelCI() {
+        return this.fechaHasta == null;
    }
    
 
-   public void misTuirnos() 
-   {
+   public void misTurnos() {
     
    }
 }

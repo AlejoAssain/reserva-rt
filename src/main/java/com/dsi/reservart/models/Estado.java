@@ -11,4 +11,44 @@ public class Estado {
         this.nombre = nom;
         this.ambito = ambit;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getAmbito() {
+        return ambito;
+    }
+
+    public void setAmbito(int ambito) {
+        this.ambito = ambito;
+    }
+
+    public Boolean getEsReservable() {
+        return esReservable;
+    }
+
+    public void setEsReservable(Boolean esReservable) {
+        this.esReservable = esReservable;
+    }
+
+    public Boolean getEsCancelable() {
+        return esCancelable;
+    }
+
+    public void setEsCancelable(Boolean esCancelable) {
+        this.esCancelable = esCancelable;
+    }
 }

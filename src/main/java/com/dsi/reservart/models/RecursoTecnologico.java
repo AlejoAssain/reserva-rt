@@ -70,8 +70,13 @@ public class RecursoTecnologico {
     }
 
     public Boolean esActivo(Estado estadoActivo) {
-        CambioEstadoRT ultimoCambioEstado = this.cambiosEstadoRT.get(this.cambiosEstadoRT.size()-1);
+        CambioEstadoRT ultimoCambioEstado = this.cambiosEstadoRT.get(this.cambiosEstadoRT.size() - 1);
         return ultimoCambioEstado.estado.equals(estadoActivo);
     }
+
+    public String getNombreEstado() {
+        return this.cambiosEstadoRT.get(this.cambiosEstadoRT.size() - 1).getEstado().getNombre();
+    }
+
 
 }

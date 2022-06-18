@@ -10,7 +10,11 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String [] args) {
-        ControladorReservaTurno controladorRT = new ControladorReservaTurno();
+        PersonalCientifico activoCientifico = new PersonalCientifico("víctormendizabal@gmail.com");
+        Usuario activoUsuario = new Usuario("admin", "admin", activoCientifico);
+        Sesion activaSesion = new Sesion(activoUsuario);
+
+        ControladorReservaTurno controladorRT = new ControladorReservaTurno(activaSesion);
         PantallaReservaTurno pantallaRT = new PantallaReservaTurno();
 
         ArrayList<TipoRecursoTecnologico> tiposRT = new ArrayList<>(Arrays.asList(
@@ -60,7 +64,7 @@ public class Main {
         ));
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(
-                new PersonalCientifico("víctormendizabal@gmail.com"),
+                activoCientifico,
                 new PersonalCientifico("pepitamontserrat@gmail.com"),
                 new PersonalCientifico("clarisalobo@gmail.com"),
                 new PersonalCientifico("rafaelrocamora@gmail.com")
@@ -75,11 +79,12 @@ public class Main {
 
         ArrayList<CentroDeInvestigacion> centrosDeInvestigacion = new ArrayList<>(Arrays.asList(
                 new CentroDeInvestigacion(
-                        "centroInvestigacion1",
+                        "Facultad Cs. Quimicas",
                         new ArrayList<AsignacionCientificoCI>(asignacionesCientificos.subList(0, 2))
 
         )));
 
+        // asigno recursos tecnologicos a centro de investigacion
         centrosDeInvestigacion.get(0).setRecursosTecnologicos(recursosTecnologicos);
         recursosTecnologicos.forEach((rt) -> {
             rt.setCentroDeInvestigacion(centrosDeInvestigacion.get(0));
@@ -90,7 +95,19 @@ public class Main {
         pantallaRT.opReservaTurno(controladorRT, tiposRT);
         // en este punto ya tenemos al controlador con el tipoRTSeleccionado
 
-        controladorRT.buscarRTDisponible(centrosDeInvestigacion, estados.get(0) );
+        // va a dejar en clase controlador a los centros de investigacion con RTs disponibles
+        controladorRT.buscarRTDisponible(centrosDeInvestigacion, estados.get(0));
+
+        RecursoTecnologico rtSeleccionadoPorPantalla = pantallaRT.solicitarSeleccionarRT(controladorRT.getCiConRTDisponibles());
+
+        // define rt seleccionado como atributo de controlador
+        controladorRT.rtSeleccionado(rtSeleccionadoPorPantalla);
+
+        Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
+
+        System.out.println(comparacion);
+
+
 
     }
 }
