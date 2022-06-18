@@ -33,14 +33,30 @@ public class Main {
                         new ArrayList<Modelo>(modelos.subList(2,4))
                         ,"Nikon")
         ));
+        // Cree los estados. Rodrigo
+        ArrayList<Estado> estados = new ArrayList<>(Arrays.asList(
+                new Estado("Activo",0),//RT
+                new Estado("Baja técnica",0),//RT
+                new Estado("Baja definitiva",0),//RT
+                new Estado("Disponible",1),//turno
+                new Estado("Reservado",1)//turno
 
-        ArrayList<CambioEstadoRT> cambiosEstadoRT = new ArrayList<>();
+        ));
 
+        // Cree los cambiosEstadoRT. Rodrigo
+        ArrayList<CambioEstadoRT> cambiosEstadoRT = new ArrayList<>(Arrays.asList(
+                new CambioEstadoRT("18/06/2022 11:00:00",estados.get(0)),
+                new CambioEstadoRT("18/06/2022 11:01:00",estados.get(0)),
+                new CambioEstadoRT("18/06/2022 11:02:00",estados.get(0)),
+                new CambioEstadoRT("18/06/2022 11:03:00",estados.get(0))
+        ));
+
+        // Aca le agregue al constructor la lista con cambiosEstadoRT. Rodrigo
         ArrayList<RecursoTecnologico> recursosTecnologicos = new ArrayList<>(Arrays.asList(
-                new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0)),
-                new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1)),
-                new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2)),
-                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3))
+                new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(0)))),
+                new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(1)))),
+                new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(2)))),
+                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))))
         ));
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(
@@ -74,7 +90,7 @@ public class Main {
         pantallaRT.opReservaTurno(controladorRT, tiposRT);
         // en este punto ya tenemos al controlador con el tipoRTSeleccionado
 
-        controladorRT.buscarRTDisponible(recursosTecnologicos);
+        //controladorRT.buscarRTDisponible(recursosTecnologicos);
 
     }
 }

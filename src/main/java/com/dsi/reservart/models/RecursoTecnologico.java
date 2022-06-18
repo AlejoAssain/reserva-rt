@@ -21,12 +21,12 @@ public class RecursoTecnologico {
     public RecursoTecnologico(
             int num,
             TipoRecursoTecnologico tipoRT,
-            Modelo modelo
-//            ArrayList<CambioEstadoRT> cambiosERT
+            Modelo modelo,
+          ArrayList<CambioEstadoRT> cambiosERT
     ) {
         this.numeroRT = num;
         this.tipoRecursoTecnologico = tipoRT;
-//        this.cambiosEstadoRT = cambiosERT;
+        this.cambiosEstadoRT = cambiosERT;
     }
 
     public void generarTurnos() {
