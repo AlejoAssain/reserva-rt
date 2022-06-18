@@ -90,7 +90,7 @@ public class Main {
         pantallaRT.opReservaTurno(controladorRT, tiposRT);
         // en este punto ya tenemos al controlador con el tipoRTSeleccionado
 
-        //controladorRT.buscarRTDisponible(recursosTecnologicos);
+        controladorRT.buscarRTDisponible(recursosTecnologicos, estados.get(0) );
 
     }
 }

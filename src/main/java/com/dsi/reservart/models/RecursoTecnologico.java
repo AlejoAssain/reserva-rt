@@ -1,7 +1,6 @@
 package com.dsi.reservart.models;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class RecursoTecnologico {
     int numeroRT;
@@ -18,14 +17,39 @@ public class RecursoTecnologico {
     CentroDeInvestigacion centroDeInvestigacion;
     Modelo modelo;
 
+    public int getNumeroRT() {
+        return numeroRT;
+    }
+
+    public void setNumeroRT(int numeroRT) {
+        this.numeroRT = numeroRT;
+    }
+
+    public ArrayList<CambioEstadoRT> getCambiosEstadoRT() {
+        return cambiosEstadoRT;
+    }
+
+    public void setCambiosEstadoRT(ArrayList<CambioEstadoRT> cambiosEstadoRT) {
+        this.cambiosEstadoRT = cambiosEstadoRT;
+    }
+
+    public Modelo getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
+    }
+
     public RecursoTecnologico(
             int num,
             TipoRecursoTecnologico tipoRT,
-            Modelo modelo,
+            Modelo model,
           ArrayList<CambioEstadoRT> cambiosERT
     ) {
         this.numeroRT = num;
         this.tipoRecursoTecnologico = tipoRT;
+        this.modelo = model;
         this.cambiosEstadoRT = cambiosERT;
     }
 
@@ -45,8 +69,9 @@ public class RecursoTecnologico {
         return this.tipoRecursoTecnologico.equals(tipoRT);
     }
 
-    public Boolean esActivo() {
-        return true;
+    public Boolean esActivo(Estado estadoActivo) {
+        CambioEstadoRT ultimoCambioEstado = this.cambiosEstadoRT.get(this.cambiosEstadoRT.size()-1);
+        return ultimoCambioEstado.estado.equals(estadoActivo);
     }
 
 }

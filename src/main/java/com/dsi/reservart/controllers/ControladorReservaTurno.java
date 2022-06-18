@@ -1,11 +1,11 @@
 package com.dsi.reservart.controllers;
 
+import com.dsi.reservart.models.Estado;
 import com.dsi.reservart.models.RecursoTecnologico;
 import com.dsi.reservart.models.Sesion;
 import com.dsi.reservart.models.TipoRecursoTecnologico;
 import com.dsi.reservart.view.PantallaReservaTurno;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class ControladorReservaTurno {
@@ -28,11 +28,11 @@ public class ControladorReservaTurno {
         return this.activaSesion.getNombreUsuarioActivo();
     }
 
-    public void buscarRTDisponible(ArrayList<RecursoTecnologico> recursosTecnologicos) {
+    public void buscarRTDisponible(ArrayList<RecursoTecnologico> recursosTecnologicos, Estado estadoActivo) {
         ArrayList<RecursoTecnologico> rtDisponibles = new ArrayList<>();
         recursosTecnologicos.forEach((recurso) -> {
-            if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo()) {
-                recursosTecnologicos.add(recurso);
+            if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo(estadoActivo)) {
+                rtDisponibles.add(recurso);//Aca vos los estabas añadiendo al Array de recursosTecnologicos, y creo que seria a rtDisponibles no?
             }
         });
     }
