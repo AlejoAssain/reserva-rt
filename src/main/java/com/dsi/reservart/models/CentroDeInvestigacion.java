@@ -179,4 +179,12 @@ public class CentroDeInvestigacion {
     public void setDirectores(ArrayList<AsignacionDirectorCI> directores) {
         this.directores = directores;
     }
+
+    public void asignarNuevoTurno(Turno turno, PersonalCientifico cientificoEnSesion) {
+        cientificos.forEach((asignacion)->{
+            if(asignacion.personalCientifico.equals(cientificoEnSesion)){
+                asignacion.asignarNuevoTurnoACientifico(turno);
+            }
+        });
+    }
 }

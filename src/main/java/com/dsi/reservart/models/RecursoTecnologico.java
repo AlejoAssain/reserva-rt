@@ -83,4 +83,8 @@ public class RecursoTecnologico {
     }
 
 
+    public void registrarReserva(Turno turnoselec, Estado estadoReservado, PersonalCientifico cientificoEnSesion) {
+        turnoselec.reservarTurno(estadoReservado);
+        centroDeInvestigacion.asignarNuevoTurno(turnoselec,cientificoEnSesion);
+    }
 }

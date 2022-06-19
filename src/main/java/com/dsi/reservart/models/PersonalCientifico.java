@@ -1,7 +1,9 @@
 //Source file: C:\\Users\\rodri\\Desktop\\Nueva carpeta\\PersonalCientifico.java
 package com.dsi.reservart.models;
 
-public class PersonalCientifico 
+import java.util.ArrayList;
+
+public class PersonalCientifico
 {
    private int legajo;
    private String name;
@@ -12,9 +14,12 @@ public class PersonalCientifico
    private String correoElectronicoPersonal;
    private int telefonoCelular;
    public Usuario usuario;
+   public ArrayList<Turno> turnos;
 
-    public PersonalCientifico(String correoElectronicoPersonal) {
+    public PersonalCientifico(String correoElectronicoPersonal, String correoElectronicoInstitucional) {
         this.correoElectronicoPersonal = correoElectronicoPersonal;
+        this.correoElectronicoInstitucional = correoElectronicoInstitucional;
+        this.turnos = new ArrayList<Turno>();
     }
 
     public int getLegajo() {

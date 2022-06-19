@@ -72,9 +72,15 @@ public class PantallaReservaTurno {
         return centrosDeInvestigacion.get(indiceCI).getRecursosTecnologicos().get(indiceRT);
     }
 
-    public int[] solicitarConfirmacion(RecursoTecnologico rescursoSelec, Turno turnoSelec){
-        int[] opciones = new int[2];
-        opciones[0] = 0;
+    public int solicitarFormaNotificacion(){
+        int op = 0;
+        System.out.println("\nNOTIFICACIÓN: (0 - mail, 1 - Whatsapp, 2 - ambos) ");
+        System.out.println("\nSeleccione opción: ");
+        op = this.scanner.nextInt();
+        return op;
+    }
+    public int solicitarConfirmacionReserva(RecursoTecnologico rescursoSelec, Turno turnoSelec){
+        int op=0;
         System.out.println("\nDATOS PARA LA RESERVA: ");
         System.out.println("\nRECURSO: ");
         System.out.println("\n    Numero de inventario: " + rescursoSelec.getNumeroRT());
@@ -85,14 +91,22 @@ public class PantallaReservaTurno {
         System.out.println("\n    Para el día: " + turnoSelec.getDiaSemana());
         System.out.println("    Fecha y hora de inicio:  " + turnoSelec.getFechaHoraInicio());
         System.out.println("    Fecha y hora de finalización: " + turnoSelec.getFechaHoraFin());
-        System.out.println("\nNOTIFICACIÓN: (0 - mail, 1 - Whatsapp) ");
-        System.out.println("\n    Seleccione opción: ");
-        opciones[0] = this.scanner.nextInt();
         System.out.println("\n¿CONFIRMAR? (0 – No, 1 – Si)");
-        System.out.println("\n    Seleccione opción: ");
-        opciones[1] = this.scanner.nextInt();
+        System.out.println("\nSeleccione opción: ");
+        op = this.scanner.nextInt();
 
-        return opciones;
+        return op;
     }
 
+    public void error(String s) {
+        System.out.println("\n-------------------------------------------------");
+        System.out.println("\nERROR: " + s);
+        System.out.println("\n-------------------------------------------------");
+    }
+
+    public void msg(String s) {
+        System.out.println("\n-------------------------------------------------");
+        System.out.println("\nMENSAJE: " + s);
+        System.out.println("\n-------------------------------------------------");
+    }
 }

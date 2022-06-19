@@ -7,14 +7,14 @@ public class Turno {
     private String diaSemana;
     private String fechaHoraInicio;
     private String fechaHoraFin;
-    public ArrayList<CambioEstadoTurno> cambioEstadoTurno;
+    public ArrayList<CambioEstadoTurno> cambiosEstadoTurno;
 
     public Turno(String fechaGeneracion, String diaSemana, String fechaHoraInicio, String fechaHoraFin, ArrayList<CambioEstadoTurno> cambioEstadoTurno) {
         this.fechaGeneracion = fechaGeneracion;
         this.diaSemana = diaSemana;
         this.fechaHoraInicio = fechaHoraInicio;
         this.fechaHoraFin = fechaHoraFin;
-        this.cambioEstadoTurno = cambioEstadoTurno;
+        this.cambiosEstadoTurno = cambioEstadoTurno;
     }
 
     public String getFechaGeneracion() {
@@ -50,10 +50,24 @@ public class Turno {
     }
 
     public ArrayList<CambioEstadoTurno> getCambioEstadoTurno() {
-        return cambioEstadoTurno;
+        return cambiosEstadoTurno;
     }
 
     public void setCambioEstadoTurno(ArrayList<CambioEstadoTurno> cambioEstadoTurno) {
-        this.cambioEstadoTurno = cambioEstadoTurno;
+        this.cambiosEstadoTurno = cambioEstadoTurno;
+    }
+
+    public void reservarTurno(Estado estadoReservado){
+        ManejadorFechas manejadorFechas = new ManejadorFechas();
+        cambiosEstadoTurno.forEach((estadoTurno) -> {
+            esActual(estadoTurno);
+        });
+        cambiosEstadoTurno.add(new CambioEstadoTurno(manejadorFechas.actualDateTimeToString(),estadoReservado));
+    }
+
+    public void esActual(CambioEstadoTurno cambioEstado){
+        if (cambioEstado.getFechaHoraHasta()==null){
+            cambioEstado.finalizar();
+        }
     }
 }

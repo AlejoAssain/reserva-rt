@@ -33,4 +33,19 @@ public class CambioEstadoTurno {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "CambioEstadoTurno{" +
+                "fechaHoraDesde='" + fechaHoraDesde + '\'' +
+                ", fechaHoraHasta='" + fechaHoraHasta + '\'' +
+                ", estado=" + estado +
+                '}';
+    }
+
+    public void finalizar(){
+        ManejadorFechas manejadorFechas = new ManejadorFechas();
+        setFechaHoraHasta(manejadorFechas.actualDateTimeToString());
+    }
+
 }

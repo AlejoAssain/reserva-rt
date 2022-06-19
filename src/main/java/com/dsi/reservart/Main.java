@@ -4,18 +4,19 @@ import com.dsi.reservart.controllers.ControladorReservaTurno;
 import com.dsi.reservart.models.*;
 import com.dsi.reservart.view.PantallaReservaTurno;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String [] args) {
-        PersonalCientifico activoCientifico = new PersonalCientifico("víctormendizabal@gmail.com");
+        PersonalCientifico activoCientifico = new PersonalCientifico("víctormendizabal@gmail.com","víctormendizabal@unc.edu.ar");
         Usuario activoUsuario = new Usuario("admin", "admin", activoCientifico);
         Sesion activaSesion = new Sesion(activoUsuario);
+        InterfazEmail interfazEmail = new InterfazEmail();
 
-        ControladorReservaTurno controladorRT = new ControladorReservaTurno(activaSesion);
+
         PantallaReservaTurno pantallaRT = new PantallaReservaTurno();
+        ControladorReservaTurno controladorRT = new ControladorReservaTurno(activaSesion,pantallaRT);
 
         ArrayList<TipoRecursoTecnologico> tiposRT = new ArrayList<>(Arrays.asList(
                 new TipoRecursoTecnologico("Balanza de precision"),
@@ -110,9 +111,9 @@ public class Main {
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(
                 activoCientifico,
-                new PersonalCientifico("pepitamontserrat@gmail.com"),
-                new PersonalCientifico("clarisalobo@gmail.com"),
-                new PersonalCientifico("rafaelrocamora@gmail.com")
+                new PersonalCientifico("pepitamontserrat@gmail.com","pepitamontserrat@unc.edu.ar"),
+                new PersonalCientifico("clarisalobo@gmail.com","clarisalobo@unc.edu.ar"),
+                new PersonalCientifico("rafaelrocamora@gmail.com","rafaelrocamora@unc.edu.ar")
         ));
 
         ArrayList<AsignacionCientificoCI> asignacionesCientificos = new ArrayList<>(Arrays.asList(
@@ -150,9 +151,23 @@ public class Main {
 
         Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
 
-        System.out.println(comparacion);
+        //System.out.println(comparacion);
 
-        //
+        //Paso 9
 
+        //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
+        //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
+        controladorRT.setTurnoSeleccionado(turnos.get(0));
+        //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
+
+
+        int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
+        //System.out.println(opcionesConfirmacion[0]);
+        if(opsConfirmacion[1] == 1){
+            controladorRT.reservarTurno(estados);
+            if(opsConfirmacion[0] == 0){
+                controladorRT.generarEmail(interfazEmail);
+            }
+        }
     }
 }

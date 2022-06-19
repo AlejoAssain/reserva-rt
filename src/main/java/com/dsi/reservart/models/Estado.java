@@ -51,4 +51,19 @@ public class Estado {
     public void setEsCancelable(Boolean esCancelable) {
         this.esCancelable = esCancelable;
     }
+
+    public Boolean esReservado(String nom) {
+        if(nom == nombre){
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean esAmbitoTurno(int amb) {
+        if(amb == ambito){
+            return true;
+        }
+        return false;
+    }
+
 }

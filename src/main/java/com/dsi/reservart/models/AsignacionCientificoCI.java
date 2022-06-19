@@ -1,10 +1,14 @@
 package com.dsi.reservart.models;
 
-public class AsignacionCientificoCI 
+import java.util.ArrayList;
+
+public class AsignacionCientificoCI
 {
    private String fechaDesde;
    private String fechaHasta;
    public PersonalCientifico personalCientifico;
+
+
 
     public AsignacionCientificoCI(PersonalCientifico thePersonalCientifico) {
         this.personalCientifico = thePersonalCientifico;
@@ -43,4 +47,11 @@ public class AsignacionCientificoCI
    public void misTurnos() {
     
    }
+
+    public Boolean asignarNuevoTurnoACientifico(Turno turno) {
+        if(personalCientifico.turnos.add(turno)){
+            return true;
+        }
+        return false;
+    }
 }

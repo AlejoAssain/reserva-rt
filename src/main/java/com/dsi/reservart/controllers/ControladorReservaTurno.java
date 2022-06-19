@@ -10,10 +10,65 @@ public class ControladorReservaTurno {
     TipoRecursoTecnologico tipoRTSeleccionado;
     ArrayList<CentroDeInvestigacion> ciConRTDisponibles;
     RecursoTecnologico recursoTecnologicoSeleccionado;
+    Turno turnoSeleccionado;
 
-    public ControladorReservaTurno(Sesion sesion) {
-        activaSesion = sesion;
+    PantallaReservaTurno pantalla;
+
+    // getrer y setter inicio
+    public ControladorReservaTurno(Sesion activaSesion, PantallaReservaTurno pantalla) {
+        this.activaSesion = activaSesion;
+        this.pantalla = pantalla;
     }
+
+    public Sesion getActivaSesion() {
+        return activaSesion;
+    }
+
+    public void setActivaSesion(Sesion activaSesion) {
+        this.activaSesion = activaSesion;
+    }
+
+    public TipoRecursoTecnologico getTipoRTSeleccionado() {
+        return tipoRTSeleccionado;
+    }
+
+    public void setTipoRTSeleccionado(TipoRecursoTecnologico tipoRTSeleccionado) {
+        this.tipoRTSeleccionado = tipoRTSeleccionado;
+    }
+
+    public ArrayList<CentroDeInvestigacion> getCiConRTDisponibles() {
+        return ciConRTDisponibles;
+    }
+
+    public void setCiConRTDisponibles(ArrayList<CentroDeInvestigacion> ciConRTDisponibles) {
+        this.ciConRTDisponibles = ciConRTDisponibles;
+    }
+
+    public RecursoTecnologico getRecursoTecnologicoSeleccionado() {
+        return recursoTecnologicoSeleccionado;
+    }
+
+    public void setRecursoTecnologicoSeleccionado(RecursoTecnologico recursoTecnologicoSeleccionado) {
+        this.recursoTecnologicoSeleccionado = recursoTecnologicoSeleccionado;
+    }
+
+    public Turno getTurnoSeleccionado() {
+        return turnoSeleccionado;
+    }
+
+    public void setTurnoSeleccionado(Turno turnoSeleccionado) {
+        this.turnoSeleccionado = turnoSeleccionado;
+    }
+
+    public PantallaReservaTurno getPantalla() {
+        return pantalla;
+    }
+
+    public void setPantalla(PantallaReservaTurno pantalla) {
+        this.pantalla = pantalla;
+    }
+
+    // getrer y setter fin
 
     public void nuevaReservaDeTurno(PantallaReservaTurno pantalla, ArrayList<TipoRecursoTecnologico> tiposRT) {
         pantalla.solicitarSeleccionarTipoRT(this, tiposRT);
@@ -55,38 +110,6 @@ public class ControladorReservaTurno {
         return false;
     }
 
-    public Sesion getActivaSesion() {
-        return activaSesion;
-    }
-
-    public void setActivaSesion(Sesion activaSesion) {
-        this.activaSesion = activaSesion;
-    }
-
-    public TipoRecursoTecnologico getTipoRTSeleccionado() {
-        return tipoRTSeleccionado;
-    }
-
-    public void setTipoRTSeleccionado(TipoRecursoTecnologico tipoRTSeleccionado) {
-        this.tipoRTSeleccionado = tipoRTSeleccionado;
-    }
-
-    public ArrayList<CentroDeInvestigacion> getCiConRTDisponibles() {
-        return ciConRTDisponibles;
-    }
-
-    public void setCiConRTDisponibles(ArrayList<CentroDeInvestigacion> ciConRTDisponibles) {
-        this.ciConRTDisponibles = ciConRTDisponibles;
-    }
-
-    public RecursoTecnologico getRecursoTecnologicoSeleccionado() {
-        return recursoTecnologicoSeleccionado;
-    }
-
-    public void setRecursoTecnologicoSeleccionado(RecursoTecnologico recursoTecnologicoSeleccionado) {
-        this.recursoTecnologicoSeleccionado = recursoTecnologicoSeleccionado;
-    }
-
     public void rtSeleccionado(RecursoTecnologico rt) {
         this.recursoTecnologicoSeleccionado = rt;
     }
@@ -117,4 +140,48 @@ public class ControladorReservaTurno {
         return false;
 
     }
+
+    public int[] presentarDatosAConfirmar(){
+        int[] opciones = new int[2];
+        opciones[0] = pantalla.solicitarFormaNotificacion();
+        opciones[1] = pantalla.solicitarConfirmacionReserva(recursoTecnologicoSeleccionado,turnoSeleccionado);
+        return opciones;
+    }
+
+    public void reservarTurno(ArrayList<Estado> estados) {
+        int indiceEstado = obtenerEstadoReservado(estados);
+        if (indiceEstado != -1){
+            Estado estadoReservado = estados.get(indiceEstado);
+            recursoTecnologicoSeleccionado.registrarReserva(turnoSeleccionado,estadoReservado,activaSesion.getCientificoEnSesion());
+            pantalla.msg("Turno reservado con éxito");
+        }else {
+            pantalla.error("No se encontró el Estado Reservado para Turno");
+            System.exit(0);
+        }
+    }
+
+    private int obtenerEstadoReservado(ArrayList<Estado> estados) {
+        for (int i = 0; i < estados.size(); i++) {
+            Boolean ambitoTurno = estados.get(i).esAmbitoTurno(1);
+            Boolean estadoReservado = estados.get(i).esReservado("Reservado");
+            if(ambitoTurno && estadoReservado){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void generarEmail(InterfazEmail interfazEmail){
+        if(interfazEmail.enviarMail(activaSesion.getCientificoEnSesion().getCorreoElectronicoPersonal(),
+                activaSesion.getCientificoEnSesion().getCorreoElectronicoInstitucional(),
+                "Usted tiene una nueva reserva.")){
+            pantalla.msg("Notificaciones via mail enviadas");
+        }else{
+            pantalla.error("Notificaciones via mail no pudieron ser enviadas");
+        }
+
+    }
+
+
+
 }
