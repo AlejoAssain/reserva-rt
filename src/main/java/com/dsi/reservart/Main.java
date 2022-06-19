@@ -55,12 +55,51 @@ public class Main {
                 new CambioEstadoRT("18/06/2022 11:03:00",estados.get(0))
         ));
 
+        ArrayList<CambioEstadoTurno> cambiosEstadoTurnos = new ArrayList<>(Arrays.asList(
+                new CambioEstadoTurno("18/06/2022 11:00:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:00:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:00:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:00:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:01:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:01:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:01:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:01:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:02:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:02:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:02:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:02:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3))
+        ));
+
+        ArrayList<Turno> turnos = new ArrayList<>(Arrays.asList(
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(0)))),//rt0
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(1)))),//rt1
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(2)))),//rt2
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(3)))),//rt3
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(4)))),//rt0
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(5)))),//rt1
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(6)))),//rt2
+                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(7)))),//rt3
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(8)))),//rt0
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(9)))),//rt1
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(10)))),//rt2
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(11)))),//rt3
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(12)))),//rt0
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(13)))),//rt1
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(14)))),//rt2
+                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(15))))//rt3
+        ));
+
+
         // Aca le agregue al constructor la lista con cambiosEstadoRT. Rodrigo
         ArrayList<RecursoTecnologico> recursosTecnologicos = new ArrayList<>(Arrays.asList(
-                new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(0)))),
-                new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(1)))),
-                new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(2)))),
-                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))))
+                new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(0))),new ArrayList<Turno>(Arrays.asList(turnos.get(0),turnos.get(4),turnos.get(8),turnos.get(12)))),
+                new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(1))),new ArrayList<Turno>(Arrays.asList(turnos.get(1),turnos.get(5),turnos.get(9),turnos.get(13)))),
+                new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(2))),new ArrayList<Turno>(Arrays.asList(turnos.get(2),turnos.get(6),turnos.get(10),turnos.get(14)))),
+                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))),new ArrayList<Turno>(Arrays.asList(turnos.get(3),turnos.get(7),turnos.get(11),turnos.get(15))))
         ));
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(

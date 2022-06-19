@@ -5,7 +5,7 @@ public class CambioEstadoTurno {
     String fechaHoraHasta;
     Estado estado;
 
-    public CambioEstadoTurno( Estado estado) {
+    public CambioEstadoTurno(String fechaHoraDesde, Estado estado) {
         this.fechaHoraDesde = fechaHoraDesde;
         this.estado = estado;
     }

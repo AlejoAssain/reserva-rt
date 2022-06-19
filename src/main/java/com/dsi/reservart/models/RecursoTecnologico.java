@@ -17,6 +17,20 @@ public class RecursoTecnologico {
     CentroDeInvestigacion centroDeInvestigacion;
     Modelo modelo;
 
+    public RecursoTecnologico(
+            int num,
+            TipoRecursoTecnologico tipoRT,
+            Modelo model,
+            ArrayList<CambioEstadoRT> cambiosERT,
+            ArrayList<Turno> turnos
+    ) {
+        this.numeroRT = num;
+        this.tipoRecursoTecnologico = tipoRT;
+        this.modelo = model;
+        this.cambiosEstadoRT = cambiosERT;
+        this.turnos = turnos;
+    }
+
     public int getNumeroRT() {
         return numeroRT;
     }
@@ -41,17 +55,7 @@ public class RecursoTecnologico {
         this.modelo = modelo;
     }
 
-    public RecursoTecnologico(
-            int num,
-            TipoRecursoTecnologico tipoRT,
-            Modelo model,
-          ArrayList<CambioEstadoRT> cambiosERT
-    ) {
-        this.numeroRT = num;
-        this.tipoRecursoTecnologico = tipoRT;
-        this.modelo = model;
-        this.cambiosEstadoRT = cambiosERT;
-    }
+
 
     public void generarTurnos() {
         
