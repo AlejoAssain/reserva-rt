@@ -2,6 +2,7 @@ package com.dsi.reservart.models;
 
 public class Modelo {
     private String nombre;
+    public Marca marca;
 
     public Modelo(String nombreModelo) {
         this.nombre = nombreModelo;
@@ -15,10 +16,11 @@ public class Modelo {
         this.nombre = nombre;
     }
 
-    @Override
-    public String toString() {
-        return "Modelo{" +
-                "nombre='" + nombre + '\'' +
-                '}';
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
     }
 }

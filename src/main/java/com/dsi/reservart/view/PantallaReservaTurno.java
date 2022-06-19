@@ -1,10 +1,7 @@
 package com.dsi.reservart.view;
 
 import com.dsi.reservart.controllers.ControladorReservaTurno;
-import com.dsi.reservart.models.CentroDeInvestigacion;
-import com.dsi.reservart.models.Estado;
-import com.dsi.reservart.models.RecursoTecnologico;
-import com.dsi.reservart.models.TipoRecursoTecnologico;
+import com.dsi.reservart.models.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -53,7 +50,7 @@ public class PantallaReservaTurno {
                 RecursoTecnologico rt = ci.getRecursosTecnologicos().get(j);
                 System.out.println("\n  RT nro " + (j + 1));
                 System.out.println("    Numero de inventario: " + rt.getNumeroRT());
-//                System.out.println(rt.getMarca());
+                System.out.println("    Marca:  " + rt.getModelo().getMarca().getNombre());
                 System.out.println("    Modelo: " + rt.getModelo().getNombre());
                 System.out.println("    Estado: " + rt.getNombreEstado());
             };
@@ -74,4 +71,28 @@ public class PantallaReservaTurno {
 
         return centrosDeInvestigacion.get(indiceCI).getRecursosTecnologicos().get(indiceRT);
     }
+
+    public int[] solicitarConfirmacion(RecursoTecnologico rescursoSelec, Turno turnoSelec){
+        int[] opciones = new int[2];
+        opciones[0] = 0;
+        System.out.println("\nDATOS PARA LA RESERVA: ");
+        System.out.println("\nRECURSO: ");
+        System.out.println("\n    Numero de inventario: " + rescursoSelec.getNumeroRT());
+        System.out.println("    Marca:  " + rescursoSelec.getModelo().getMarca().getNombre());
+        System.out.println("    Modelo: " + rescursoSelec.getModelo().getNombre());
+        System.out.println("    Estado: " + rescursoSelec.getNombreEstado());
+        System.out.println("\nTURNO: ");
+        System.out.println("\n    Para el día: " + turnoSelec.getDiaSemana());
+        System.out.println("    Fecha y hora de inicio:  " + turnoSelec.getFechaHoraInicio());
+        System.out.println("    Fecha y hora de finalización: " + turnoSelec.getFechaHoraFin());
+        System.out.println("\nNOTIFICACIÓN: (0 - mail, 1 - Whatsapp) ");
+        System.out.println("\n    Seleccione opción: ");
+        opciones[0] = this.scanner.nextInt();
+        System.out.println("\n¿CONFIRMAR? (0 – No, 1 – Si)");
+        System.out.println("\n    Seleccione opción: ");
+        opciones[1] = this.scanner.nextInt();
+
+        return opciones;
+    }
+
 }

@@ -37,6 +37,12 @@ public class Main {
                         new ArrayList<Modelo>(modelos.subList(2,4))
                         ,"Nikon")
         ));
+
+        modelos.get(0).setMarca(marcas.get(0));
+        modelos.get(1).setMarca(marcas.get(0));
+        modelos.get(2).setMarca(marcas.get(1));
+        modelos.get(3).setMarca(marcas.get(1));
+
         // Cree los estados. Rodrigo
         ArrayList<Estado> estados = new ArrayList<>(Arrays.asList(
                 new Estado("Activo",0),//RT
@@ -76,21 +82,21 @@ public class Main {
 
         ArrayList<Turno> turnos = new ArrayList<>(Arrays.asList(
                 new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(0)))),//rt0
-                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(1)))),//rt1
-                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(2)))),//rt2
-                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(3)))),//rt3
+                new Turno("18/06/2022 11:01:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(1)))),//rt1
+                new Turno("18/06/2022 11:02:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(2)))),//rt2
+                new Turno("18/06/2022 11:03:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(3)))),//rt3
                 new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(4)))),//rt0
-                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(5)))),//rt1
-                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(6)))),//rt2
-                new Turno("18/06/2022 11:00:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(7)))),//rt3
+                new Turno("18/06/2022 11:01:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(5)))),//rt1
+                new Turno("18/06/2022 11:02:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(6)))),//rt2
+                new Turno("18/06/2022 11:03:00","Martes","21/06/2022 18:00:00","21/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(7)))),//rt3
                 new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(8)))),//rt0
-                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(9)))),//rt1
-                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(10)))),//rt2
-                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(11)))),//rt3
+                new Turno("18/06/2022 11:01:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(9)))),//rt1
+                new Turno("18/06/2022 11:02:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(10)))),//rt2
+                new Turno("18/06/2022 11:03:00","Miércoles","22/06/2022 16:00:00","22/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(11)))),//rt3
                 new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(12)))),//rt0
-                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(13)))),//rt1
-                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(14)))),//rt2
-                new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(15))))//rt3
+                new Turno("18/06/2022 11:01:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(13)))),//rt1
+                new Turno("18/06/2022 11:02:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(14)))),//rt2
+                new Turno("18/06/2022 11:03:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(15))))//rt3
         ));
 
 
@@ -146,7 +152,7 @@ public class Main {
 
         System.out.println(comparacion);
 
-
+        //
 
     }
 }
