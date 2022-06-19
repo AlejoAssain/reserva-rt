@@ -141,10 +141,14 @@ public class ControladorReservaTurno {
 
     }
 
+    public Turno solicitarSeleccionTurno() {
+         return this.pantalla.solicitarSeleccionarTurno(this.recursoTecnologicoSeleccionado.getTurnos());
+    }
+
     public int[] presentarDatosAConfirmar(){
         int[] opciones = new int[2];
-        opciones[0] = pantalla.solicitarFormaNotificacion();
-        opciones[1] = pantalla.solicitarConfirmacionReserva(recursoTecnologicoSeleccionado,turnoSeleccionado);
+        opciones[0] = this.pantalla.solicitarFormaNotificacion();
+        opciones[1] = this.pantalla.solicitarConfirmacionReserva(this.recursoTecnologicoSeleccionado,this.turnoSeleccionado);
         return opciones;
     }
 
@@ -152,10 +156,10 @@ public class ControladorReservaTurno {
         int indiceEstado = obtenerEstadoReservado(estados);
         if (indiceEstado != -1){
             Estado estadoReservado = estados.get(indiceEstado);
-            recursoTecnologicoSeleccionado.registrarReserva(turnoSeleccionado,estadoReservado,activaSesion.getCientificoEnSesion());
-            pantalla.msg("Turno reservado con éxito");
+            this.recursoTecnologicoSeleccionado.registrarReserva(this.turnoSeleccionado,estadoReservado,this.activaSesion.getCientificoEnSesion());
+            this.pantalla.msg("Turno reservado con éxito");
         }else {
-            pantalla.error("No se encontró el Estado Reservado para Turno");
+            this.pantalla.error("No se encontró el Estado Reservado para Turno");
             System.exit(0);
         }
     }
@@ -172,16 +176,13 @@ public class ControladorReservaTurno {
     }
 
     public void generarEmail(InterfazEmail interfazEmail){
-        if(interfazEmail.enviarMail(activaSesion.getCientificoEnSesion().getCorreoElectronicoPersonal(),
-                activaSesion.getCientificoEnSesion().getCorreoElectronicoInstitucional(),
+        if(interfazEmail.enviarMail(this.activaSesion.getCientificoEnSesion().getCorreoElectronicoPersonal(),
+                this.activaSesion.getCientificoEnSesion().getCorreoElectronicoInstitucional(),
                 "Usted tiene una nueva reserva.")){
-            pantalla.msg("Notificaciones via mail enviadas");
+            this.pantalla.msg("Notificaciones via mail enviadas");
         }else{
-            pantalla.error("Notificaciones via mail no pudieron ser enviadas");
+            this.pantalla.error("Notificaciones via mail no pudieron ser enviadas");
         }
 
     }
-
-
-
 }

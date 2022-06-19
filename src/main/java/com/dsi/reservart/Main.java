@@ -157,9 +157,12 @@ public class Main {
 
         //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
         //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
-        controladorRT.setTurnoSeleccionado(turnos.get(0));
-        //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
+//        controladorRT.setTurnoSeleccionado(turnos.get(0));
 
+        // solicitar seleccion de turno
+
+        Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
+        controladorRT.setTurnoSeleccionado(turnoSeleccionado);
 
         int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
         //System.out.println(opcionesConfirmacion[0]);

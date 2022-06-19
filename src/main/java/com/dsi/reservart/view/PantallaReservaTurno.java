@@ -79,6 +79,20 @@ public class PantallaReservaTurno {
         op = this.scanner.nextInt();
         return op;
     }
+
+    public Turno solicitarSeleccionarTurno(ArrayList<Turno> turnos) {
+        System.out.println("\nSELECCIONE UN TURNO:");
+        for (int i = 0; i < turnos.size(); i++) {
+            System.out.println("\n  TURNO" + (i + 1) + ": ");
+            System.out.println("    Para el día: " + turnos.get(i).getDiaSemana());
+            System.out.println("    Fecha y hora de inicio:  " + turnos.get(i).getFechaHoraInicio());
+            System.out.println("    Fecha y hora de finalización: " + turnos.get(i).getFechaHoraFin());
+            System.out.println("Seleccione opción: ");
+        }
+        int seleccion = this.scanner.nextInt();
+        return turnos.get(seleccion - 1);
+    }
+
     public int solicitarConfirmacionReserva(RecursoTecnologico rescursoSelec, Turno turnoSelec){
         int op=0;
         System.out.println("\nDATOS PARA LA RESERVA: ");

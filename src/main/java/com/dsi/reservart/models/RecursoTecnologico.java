@@ -78,10 +78,16 @@ public class RecursoTecnologico {
         return ultimoCambioEstado.estado.equals(estadoActivo);
     }
 
+
+
     public String getNombreEstado() {
         return this.cambiosEstadoRT.get(this.cambiosEstadoRT.size() - 1).getEstado().getNombre();
     }
 
+
+    public ArrayList<Turno> getTurnos() {
+        return this.turnos;
+    }
 
     public void registrarReserva(Turno turnoselec, Estado estadoReservado, PersonalCientifico cientificoEnSesion) {
         turnoselec.reservarTurno(estadoReservado);
