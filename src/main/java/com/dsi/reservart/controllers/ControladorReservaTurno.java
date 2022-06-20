@@ -69,11 +69,9 @@ public class ControladorReservaTurno {
     }
 
     public void nuevaReservaDeTurno(PantallaReservaTurno pantalla, ArrayList<TipoRecursoTecnologico> tiposRT) {
-        pantalla.solicitarSeleccionarTipoRT(this, tiposRT);
-    }
-
-    public void tipoRTSeleccionado(TipoRecursoTecnologico tipoRT) {
-        this.tipoRTSeleccionado = tipoRT;
+        TipoRecursoTecnologico tRTSeleccionado = pantalla.solicitarSeleccionarTipoRT(tiposRT);
+        this.setTipoRTSeleccionado(tRTSeleccionado);
+        System.out.println(this.tipoRTSeleccionado.getNombre());
     }
 
     public String obtenerNombreUsuarioActivo() {
