@@ -84,7 +84,9 @@ public class Main {
                 new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
                 new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
                 new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
-                new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3))
+                new CambioEstadoTurno("18/06/2022 11:03:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:04:00",estados.get(3)),
+                new CambioEstadoTurno("18/06/2022 11:05:00",estados.get(3))
         ));
 
         ArrayList<Turno> turnos = new ArrayList<>(Arrays.asList(
@@ -103,7 +105,9 @@ public class Main {
                 new Turno("18/06/2022 11:00:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(12)))),//rt0
                 new Turno("18/06/2022 11:01:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(13)))),//rt1
                 new Turno("18/06/2022 11:02:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(14)))),//rt2
-                new Turno("18/06/2022 11:03:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(15))))//rt3
+                new Turno("18/06/2022 11:03:00","Miércoles","22/06/2022 18:00:00","22/06/2022 20:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(15)))),//rt3
+                new Turno("18/06/2022 11:04:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(16)))),//rt4
+                new Turno("18/06/2022 11:05:00","Martes","21/06/2022 16:00:00","21/06/2022 18:00:00",new ArrayList<CambioEstadoTurno>(Arrays.asList(cambiosEstadoTurnos.get(17))))//rt5
         ));
 
 
@@ -112,8 +116,9 @@ public class Main {
                 new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(0))), new ArrayList<Turno>(Arrays.asList(turnos.get(0),turnos.get(4),turnos.get(8),turnos.get(12)))),
                 new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(1))), new ArrayList<Turno>(Arrays.asList(turnos.get(1),turnos.get(5),turnos.get(9),turnos.get(13)))),
                 new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(2))), new ArrayList<Turno>(Arrays.asList(turnos.get(2),turnos.get(6),turnos.get(10),turnos.get(14)))),
-                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))), new ArrayList<Turno>(Arrays.asList(turnos.get(3),turnos.get(7),turnos.get(11),turnos.get(15))))
-//                new RecursoTecnologico(5, tiposRT.get(0), modelos.get(4), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(4))), new ArrayList<Turno>()
+                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))), new ArrayList<Turno>(Arrays.asList(turnos.get(3),turnos.get(7),turnos.get(11),turnos.get(15)))),
+                new RecursoTecnologico(5, tiposRT.get(0), modelos.get(4), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(4))), new ArrayList<Turno>(Arrays.asList(turnos.get(16)))),
+                new RecursoTecnologico(6, tiposRT.get(1), modelos.get(5), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(4))), new ArrayList<Turno>(Arrays.asList(turnos.get(17))))
         ));
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(
