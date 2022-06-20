@@ -170,7 +170,11 @@ public class Main {
             //System.out.println(opcionesConfirmacion[0]);
             if (opsConfirmacion[1] == 1) {
                 controladorRT.reservarTurno(estados);
-                if (opsConfirmacion[0] == 0) {
+                if (opsConfirmacion[0] == 0 ) {
+                    controladorRT.generarEmail(interfazEmail);
+                } else if (opsConfirmacion[0] == 1) {
+
+                } else if (opsConfirmacion[0] == 2) {
                     controladorRT.generarEmail(interfazEmail);
                 }
             }
@@ -180,8 +184,6 @@ public class Main {
             centrosDeInvestigacion.forEach((ci) -> {
                 ci.setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
             });
-
-
             seleccionMenu = pantallaRT.solicitarOpcionContinuar();
         }
     }
