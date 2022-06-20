@@ -3,6 +3,7 @@ package com.dsi.reservart;
 import com.dsi.reservart.controllers.ControladorReservaTurno;
 import com.dsi.reservart.models.*;
 import com.dsi.reservart.view.PantallaReservaTurno;
+import com.sun.source.tree.ArrayAccessTree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,22 +29,26 @@ public class Main {
                 new Modelo("TXB622L"),
                 new Modelo("LBAL-20 / BALP-001"),
                 new Modelo("MM-400/800"),
-                new Modelo("TXB622L")
+                new Modelo("TXB622L"),
+                new Modelo("YZ-002"),
+                new Modelo("RM-231")
         ));
 
         ArrayList<Marca> marcas = new ArrayList<>(Arrays.asList(
                 new Marca(
-                        new ArrayList<Modelo>(modelos.subList(0,2)),
+                        new ArrayList<Modelo>(modelos.subList(0,3)),
                         "Shidmazu"),
                 new Marca(
-                        new ArrayList<Modelo>(modelos.subList(2,4))
+                        new ArrayList<Modelo>(modelos.subList(3,6))
                         ,"Nikon")
         ));
 
         modelos.get(0).setMarca(marcas.get(0));
         modelos.get(1).setMarca(marcas.get(0));
-        modelos.get(2).setMarca(marcas.get(1));
+        modelos.get(2).setMarca(marcas.get(0));
         modelos.get(3).setMarca(marcas.get(1));
+        modelos.get(4).setMarca(marcas.get(1));
+        modelos.get(5).setMarca(marcas.get(1));
 
         ArrayList<Estado> estados = new ArrayList<>(Arrays.asList(
                 new Estado("Activo",0),//RT
@@ -58,7 +63,9 @@ public class Main {
                 new CambioEstadoRT("18/06/2022 11:00:00",estados.get(0)),
                 new CambioEstadoRT("18/06/2022 11:01:00",estados.get(0)),
                 new CambioEstadoRT("18/06/2022 11:02:00",estados.get(0)),
-                new CambioEstadoRT("18/06/2022 11:03:00",estados.get(0))
+                new CambioEstadoRT("18/06/2022 11:03:00",estados.get(0)),
+                new CambioEstadoRT("18/06/2022 11:04:00",estados.get(0)),
+                new CambioEstadoRT("18/06/2022 11:05:00",estados.get(0))
         ));
 
         ArrayList<CambioEstadoTurno> cambiosEstadoTurnos = new ArrayList<>(Arrays.asList(
@@ -102,10 +109,11 @@ public class Main {
 
         // Aca le agregue al constructor la lista con cambiosEstadoRT. Rodrigo
         ArrayList<RecursoTecnologico> recursosTecnologicos = new ArrayList<>(Arrays.asList(
-                new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(0))),new ArrayList<Turno>(Arrays.asList(turnos.get(0),turnos.get(4),turnos.get(8),turnos.get(12)))),
-                new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(1))),new ArrayList<Turno>(Arrays.asList(turnos.get(1),turnos.get(5),turnos.get(9),turnos.get(13)))),
-                new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(2))),new ArrayList<Turno>(Arrays.asList(turnos.get(2),turnos.get(6),turnos.get(10),turnos.get(14)))),
-                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))),new ArrayList<Turno>(Arrays.asList(turnos.get(3),turnos.get(7),turnos.get(11),turnos.get(15))))
+                new RecursoTecnologico(1, tiposRT.get(0), modelos.get(0), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(0))), new ArrayList<Turno>(Arrays.asList(turnos.get(0),turnos.get(4),turnos.get(8),turnos.get(12)))),
+                new RecursoTecnologico(2, tiposRT.get(0), modelos.get(1), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(1))), new ArrayList<Turno>(Arrays.asList(turnos.get(1),turnos.get(5),turnos.get(9),turnos.get(13)))),
+                new RecursoTecnologico(3, tiposRT.get(1), modelos.get(2), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(2))), new ArrayList<Turno>(Arrays.asList(turnos.get(2),turnos.get(6),turnos.get(10),turnos.get(14)))),
+                new RecursoTecnologico(4, tiposRT.get(1), modelos.get(3), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(3))), new ArrayList<Turno>(Arrays.asList(turnos.get(3),turnos.get(7),turnos.get(11),turnos.get(15))))
+//                new RecursoTecnologico(5, tiposRT.get(0), modelos.get(4), new ArrayList<CambioEstadoRT>(Arrays.asList(cambiosEstadoRT.get(4))), new ArrayList<Turno>()
         ));
 
         ArrayList<PersonalCientifico> cientificos = new ArrayList<>(Arrays.asList(
@@ -122,18 +130,34 @@ public class Main {
                 new AsignacionCientificoCI(cientificos.get(3))
         ));
 
-        ArrayList<CentroDeInvestigacion> centrosDeInvestigacion = new ArrayList<>(Arrays.asList(
-                new CentroDeInvestigacion(
-                        "Facultad Cs. Quimicas",
-                        new ArrayList<AsignacionCientificoCI>(asignacionesCientificos.subList(0, 2))
 
-        )));
+        CentroDeInvestigacion ci1 = new CentroDeInvestigacion(
+                "Facultad Cs. Quimicas",
+                new ArrayList<AsignacionCientificoCI>(asignacionesCientificos.subList(0, 2))
+        );
 
-        // asigno recursos tecnologicos a centro de investigacion
-        centrosDeInvestigacion.get(0).setRecursosTecnologicos(recursosTecnologicos);
+        // asigno recursos tecnologicos a centro de investigacion 1
+        ci1.setRecursosTecnologicos(recursosTecnologicos);
         recursosTecnologicos.forEach((rt) -> {
-            rt.setCentroDeInvestigacion(centrosDeInvestigacion.get(0));
+            rt.setCentroDeInvestigacion(ci1);
         });
+
+        // asigno recursos tecnologicos a centro de investigacion 2
+
+
+        CentroDeInvestigacion ci2 = new CentroDeInvestigacion(
+                "Facultad de Cs. Exactas",
+                new ArrayList<AsignacionCientificoCI>(asignacionesCientificos.subList(2, 4))
+        );
+
+        ArrayList<CentroDeInvestigacion> centrosDeInvestigacion = new ArrayList<>(Arrays.asList(
+                ci1,
+                ci2
+        ));
+
+
+
+
 
         pantallaRT.mostrarUsuarioActivo(controladorRT);
 
