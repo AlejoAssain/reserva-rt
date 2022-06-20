@@ -164,7 +164,7 @@ public class Main {
         ));
 
 
-        pantallaRT.mostrarUsuarioActivo(controladorRT);
+//        pantallaRT.mostrarUsuarioActivo(controladorRT);
 
         Integer seleccionMenu = pantallaRT.solicitarOpcionContinuar();
 
@@ -180,7 +180,7 @@ public class Main {
             Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
 
             if (!comparacion) {
-                pantallaRT.error("Ustedes no pertenece al mismo centro de investigacion que el recurso tecnologico...");
+                pantallaRT.error("Usted no pertenece al mismo centro de investigacion que el recurso tecnologico...");
             } else {
                 Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
 
