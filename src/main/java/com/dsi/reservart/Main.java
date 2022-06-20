@@ -45,7 +45,6 @@ public class Main {
         modelos.get(2).setMarca(marcas.get(1));
         modelos.get(3).setMarca(marcas.get(1));
 
-        // Cree los estados. Rodrigo
         ArrayList<Estado> estados = new ArrayList<>(Arrays.asList(
                 new Estado("Activo",0),//RT
                 new Estado("Baja técnica",0),//RT
@@ -55,7 +54,6 @@ public class Main {
 
         ));
 
-        // Cree los cambiosEstadoRT. Rodrigo
         ArrayList<CambioEstadoRT> cambiosEstadoRT = new ArrayList<>(Arrays.asList(
                 new CambioEstadoRT("18/06/2022 11:00:00",estados.get(0)),
                 new CambioEstadoRT("18/06/2022 11:01:00",estados.get(0)),
@@ -155,35 +153,47 @@ public class Main {
 
             Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
 
-            //Paso 9
+            if (!comparacion) {
+                pantallaRT.error("Ustedes no pertenece al mismo centro de investigacion que el recurso tecnologico...");
+            } else {
 
-            //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
-            //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
-            //controladorRT.setTurnoSeleccionado(turnos.get(0));
+                //Paso 9
 
-            // solicitar seleccion de turno
+                //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
+                //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
+                //controladorRT.setTurnoSeleccionado(turnos.get(0));
 
-            Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
-            controladorRT.setTurnoSeleccionado(turnoSeleccionado);
+                // solicitar seleccion de turno
 
-            int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
-            //System.out.println(opcionesConfirmacion[0]);
-            if (opsConfirmacion[1] == 1) {
-                controladorRT.reservarTurno(estados);
-                if (opsConfirmacion[0] == 0 ) {
-                    controladorRT.generarEmail(interfazEmail);
-                } else if (opsConfirmacion[0] == 1) {
+                Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
 
-                } else if (opsConfirmacion[0] == 2) {
-                    controladorRT.generarEmail(interfazEmail);
+                if (turnoSeleccionado.esDisponible()) {
+
+                    controladorRT.setTurnoSeleccionado(turnoSeleccionado);
+
+                    int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
+                    //System.out.println(opcionesConfirmacion[0]);
+                    if (opsConfirmacion[1] == 1) {
+                        controladorRT.reservarTurno(estados);
+                        if (opsConfirmacion[0] == 0) {
+                            controladorRT.generarEmail(interfazEmail);
+                        } else if (opsConfirmacion[0] == 1) {
+
+                        } else if (opsConfirmacion[0] == 2) {
+                            controladorRT.generarEmail(interfazEmail);
+                        }
+                    }
+
+                    // asignar el nuevo rt al ci del main
+
+                    centrosDeInvestigacion.forEach((ci) -> {
+                        ci.setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
+                    });
+                } else {
+                    pantallaRT.error("\n\nEL TURNO SELECCIONADO NO ES UN TURNO DISPONIBLE");
                 }
             }
 
-            // asignar el nuevo rt al ci del main
-
-            centrosDeInvestigacion.forEach((ci) -> {
-                ci.setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
-            });
             seleccionMenu = pantallaRT.solicitarOpcionContinuar();
         }
     }

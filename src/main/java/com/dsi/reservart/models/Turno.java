@@ -74,4 +74,8 @@ public class Turno {
     public String getNombreEstadoActual() {
         return cambiosEstadoTurno.get(this.cambiosEstadoTurno.size() - 1).getNombreEstado();
     }
+
+    public Boolean esDisponible() {
+        return this.cambiosEstadoTurno.get(this.cambiosEstadoTurno.size() - 1).getEstado().esReservado("Disponible");
+    }
 }
