@@ -187,4 +187,12 @@ public class CentroDeInvestigacion {
             }
         });
     }
+
+    public void setRecursoTecnologicoModificado(RecursoTecnologico recursoTecnologicoModificado) {
+        this.recursosTecnologicos.forEach((rt) -> {
+            if (rt.getNumeroRT() == recursoTecnologicoModificado.getNumeroRT()) {
+                rt = recursoTecnologicoModificado;
+            }
+        });
+    }
 }

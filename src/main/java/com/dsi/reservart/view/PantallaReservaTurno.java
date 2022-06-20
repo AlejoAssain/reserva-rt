@@ -87,8 +87,9 @@ public class PantallaReservaTurno {
             System.out.println("    Para el día: " + turnos.get(i).getDiaSemana());
             System.out.println("    Fecha y hora de inicio:  " + turnos.get(i).getFechaHoraInicio());
             System.out.println("    Fecha y hora de finalización: " + turnos.get(i).getFechaHoraFin());
-            System.out.println("Seleccione opción: ");
+            System.out.println("    Estado de turno: " + turnos.get(i).getNombreEstadoActual());
         }
+        System.out.println("Seleccione opción: ");
         int seleccion = this.scanner.nextInt();
         return turnos.get(seleccion - 1);
     }

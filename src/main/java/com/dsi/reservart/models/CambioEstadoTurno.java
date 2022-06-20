@@ -48,4 +48,8 @@ public class CambioEstadoTurno {
         setFechaHoraHasta(manejadorFechas.actualDateTimeToString());
     }
 
+    public String getNombreEstado() {
+        return this.estado.getNombre();
+    }
+
 }

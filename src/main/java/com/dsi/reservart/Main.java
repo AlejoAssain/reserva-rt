@@ -155,13 +155,11 @@ public class Main {
 
             Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
 
-            //System.out.println(comparacion);
-
             //Paso 9
 
             //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
             //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
-//        controladorRT.setTurnoSeleccionado(turnos.get(0));
+            //controladorRT.setTurnoSeleccionado(turnos.get(0));
 
             // solicitar seleccion de turno
 
@@ -176,6 +174,13 @@ public class Main {
                     controladorRT.generarEmail(interfazEmail);
                 }
             }
+
+            // asignar el nuevo rt al ci del main
+
+            centrosDeInvestigacion.forEach((ci) -> {
+                ci.setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
+            });
+
 
             seleccionMenu = pantallaRT.solicitarOpcionContinuar();
         }

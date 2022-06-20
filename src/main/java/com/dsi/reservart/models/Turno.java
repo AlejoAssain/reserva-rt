@@ -70,4 +70,8 @@ public class Turno {
             cambioEstado.finalizar();
         }
     }
+
+    public String getNombreEstadoActual() {
+        return cambiosEstadoTurno.get(this.cambiosEstadoTurno.size() - 1).getNombreEstado();
+    }
 }
