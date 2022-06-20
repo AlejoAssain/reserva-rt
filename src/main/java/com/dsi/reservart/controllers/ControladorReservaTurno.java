@@ -68,8 +68,6 @@ public class ControladorReservaTurno {
         this.pantalla = pantalla;
     }
 
-    // getrer y setter fin
-
     public void nuevaReservaDeTurno(PantallaReservaTurno pantalla, ArrayList<TipoRecursoTecnologico> tiposRT) {
         pantalla.solicitarSeleccionarTipoRT(this, tiposRT);
     }
@@ -84,14 +82,13 @@ public class ControladorReservaTurno {
 
     public Boolean buscarRTDisponible(ArrayList<CentroDeInvestigacion> centrosDeInvestigacion, Estado estadoActivo) {
         ArrayList<CentroDeInvestigacion> ciConRTDisponibles = new ArrayList<>();
-//        ArrayList<RecursoTecnologico> rtDisponibles = new ArrayList<>();
 
         centrosDeInvestigacion.forEach((centroI) -> {
             ArrayList<RecursoTecnologico> recursoTecnologicosDisponibles = new ArrayList<>();
 
             centroI.recursosTecnologicos.forEach((recurso) -> {
                 if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo(estadoActivo)) {
-                    recursoTecnologicosDisponibles.add(recurso);//Aca vos los estabas añadiendo al Array de recursosTecnologicos, y creo que seria a rtDisponibles no?
+                    recursoTecnologicosDisponibles.add(recurso);
                 }
             });
             if (recursoTecnologicosDisponibles.size() > 0) {
@@ -138,7 +135,6 @@ public class ControladorReservaTurno {
         }
 
         return false;
-
     }
 
     public Turno solicitarSeleccionTurno() {
@@ -183,6 +179,5 @@ public class ControladorReservaTurno {
         }else{
             this.pantalla.error("Notificaciones via mail no pudieron ser enviadas");
         }
-
     }
 }

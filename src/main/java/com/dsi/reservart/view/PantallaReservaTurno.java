@@ -28,19 +28,8 @@ public class PantallaReservaTurno {
         System.out.println("\nSELECCIONE UN TIPO DE RECURSO TECNOLOGICO");
         seleccion = this.scanner.nextInt();
 
-
         controlador.tipoRTSeleccionado(tiposRT.get(seleccion - 1));
-
     }
-
-
-//    public void tipoRTSeleccionado(
-//            ControladorReservaTurno controlador,
-//            ArrayList<CentroDeInvestigacion> centrosDeInvestigacion,
-//            Estado estadoActivo
-//    ) {
-//        controlador.buscarRTDisponible(centrosDeInvestigacion, estadoActivo);
-//    }
 
     public RecursoTecnologico solicitarSeleccionarRT(ArrayList<CentroDeInvestigacion> centrosDeInvestigacion) {
         for (int i = 0; i < centrosDeInvestigacion.size(); i++) {

@@ -142,26 +142,26 @@ public class Main {
         );
 
         // asigno recursos tecnologicos a centro de investigacion 1
-        ci1.setRecursosTecnologicos(recursosTecnologicos);
-        recursosTecnologicos.forEach((rt) -> {
-            rt.setCentroDeInvestigacion(ci1);
-        });
-
-        // asigno recursos tecnologicos a centro de investigacion 2
-
+        ci1.setRecursosTecnologicos(new ArrayList<RecursoTecnologico>(recursosTecnologicos.subList(0, 4)));
+        for (int i = 0; i < 4; i++) {
+            recursosTecnologicos.get(i).setCentroDeInvestigacion(ci1);
+        }
 
         CentroDeInvestigacion ci2 = new CentroDeInvestigacion(
                 "Facultad de Cs. Exactas",
                 new ArrayList<AsignacionCientificoCI>(asignacionesCientificos.subList(2, 4))
         );
 
+        // asigno recursos tecnologicos a centro de investigacion 2
+        ci2.setRecursosTecnologicos(new ArrayList<RecursoTecnologico>(recursosTecnologicos.subList(4, 6)));
+        for (int i = 4; i < recursosTecnologicos.size(); i++) {
+            recursosTecnologicos.get(i).setCentroDeInvestigacion(ci2);
+        }
+
         ArrayList<CentroDeInvestigacion> centrosDeInvestigacion = new ArrayList<>(Arrays.asList(
                 ci1,
                 ci2
         ));
-
-
-
 
 
         pantallaRT.mostrarUsuarioActivo(controladorRT);
@@ -170,14 +170,11 @@ public class Main {
 
         while (seleccionMenu == 1) {
             pantallaRT.opReservaTurno(controladorRT, tiposRT);
-            // en este punto ya tenemos al controlador con el tipoRTSeleccionado
 
-            // va a dejar en clase controlador a los centros de investigacion con RTs disponibles
             controladorRT.buscarRTDisponible(centrosDeInvestigacion, estados.get(0));
 
             RecursoTecnologico rtSeleccionadoPorPantalla = pantallaRT.solicitarSeleccionarRT(controladorRT.getCiConRTDisponibles());
 
-            // define rt seleccionado como atributo de controlador
             controladorRT.rtSeleccionado(rtSeleccionadoPorPantalla);
 
             Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
@@ -185,23 +182,12 @@ public class Main {
             if (!comparacion) {
                 pantallaRT.error("Ustedes no pertenece al mismo centro de investigacion que el recurso tecnologico...");
             } else {
-
-                //Paso 9
-
-                //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
-                //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
-                //controladorRT.setTurnoSeleccionado(turnos.get(0));
-
-                // solicitar seleccion de turno
-
                 Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
 
                 if (turnoSeleccionado.esDisponible()) {
-
                     controladorRT.setTurnoSeleccionado(turnoSeleccionado);
 
                     int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
-                    //System.out.println(opcionesConfirmacion[0]);
                     if (opsConfirmacion[1] == 1) {
                         controladorRT.reservarTurno(estados);
                         if (opsConfirmacion[0] == 0) {
@@ -212,8 +198,6 @@ public class Main {
                             controladorRT.generarEmail(interfazEmail);
                         }
                     }
-
-                    // asignar el nuevo rt al ci del main
 
                     centrosDeInvestigacion.forEach((ci) -> {
                         ci.setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
