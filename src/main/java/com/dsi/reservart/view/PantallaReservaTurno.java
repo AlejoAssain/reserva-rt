@@ -123,4 +123,16 @@ public class PantallaReservaTurno {
         System.out.println("\nMENSAJE: " + s);
         System.out.println("\n-------------------------------------------------");
     }
+
+    public Integer solicitarOpcionContinuar() {
+        Scanner mainScanner = new Scanner(System.in);
+
+        System.out.println("\n\n  RESERVA RECURSO TECNOLOGICO");
+        System.out.println(" --- Ingrese 0 para salir");
+        System.out.println(" --- Ingrese 1 para realizar reserva de recurso tecnologico");
+        System.out.println("Ingrese una opcion:");
+        Integer seleccionMenu = mainScanner.nextInt();
+
+        return seleccionMenu;
+    }
 }

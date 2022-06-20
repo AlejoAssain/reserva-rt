@@ -6,6 +6,7 @@ import com.dsi.reservart.view.PantallaReservaTurno;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String [] args) {
@@ -138,39 +139,45 @@ public class Main {
 
         pantallaRT.mostrarUsuarioActivo(controladorRT);
 
-        pantallaRT.opReservaTurno(controladorRT, tiposRT);
-        // en este punto ya tenemos al controlador con el tipoRTSeleccionado
+        Integer seleccionMenu = pantallaRT.solicitarOpcionContinuar();
 
-        // va a dejar en clase controlador a los centros de investigacion con RTs disponibles
-        controladorRT.buscarRTDisponible(centrosDeInvestigacion, estados.get(0));
+        while (seleccionMenu == 1) {
+            pantallaRT.opReservaTurno(controladorRT, tiposRT);
+            // en este punto ya tenemos al controlador con el tipoRTSeleccionado
 
-        RecursoTecnologico rtSeleccionadoPorPantalla = pantallaRT.solicitarSeleccionarRT(controladorRT.getCiConRTDisponibles());
+            // va a dejar en clase controlador a los centros de investigacion con RTs disponibles
+            controladorRT.buscarRTDisponible(centrosDeInvestigacion, estados.get(0));
 
-        // define rt seleccionado como atributo de controlador
-        controladorRT.rtSeleccionado(rtSeleccionadoPorPantalla);
+            RecursoTecnologico rtSeleccionadoPorPantalla = pantallaRT.solicitarSeleccionarRT(controladorRT.getCiConRTDisponibles());
 
-        Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
+            // define rt seleccionado como atributo de controlador
+            controladorRT.rtSeleccionado(rtSeleccionadoPorPantalla);
 
-        //System.out.println(comparacion);
+            Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
 
-        //Paso 9
+            //System.out.println(comparacion);
 
-        //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
-        //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
+            //Paso 9
+
+            //SON EJEMPLOS. ELIMINAR APENAS SE TERMINE DE UTILIZAR
+            //controladorRT.setRecursoTecnologicoSeleccionado(recursosTecnologicos.get(0));
 //        controladorRT.setTurnoSeleccionado(turnos.get(0));
 
-        // solicitar seleccion de turno
+            // solicitar seleccion de turno
 
-        Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
-        controladorRT.setTurnoSeleccionado(turnoSeleccionado);
+            Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
+            controladorRT.setTurnoSeleccionado(turnoSeleccionado);
 
-        int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
-        //System.out.println(opcionesConfirmacion[0]);
-        if(opsConfirmacion[1] == 1){
-            controladorRT.reservarTurno(estados);
-            if(opsConfirmacion[0] == 0){
-                controladorRT.generarEmail(interfazEmail);
+            int[] opsConfirmacion = controladorRT.presentarDatosAConfirmar();
+            //System.out.println(opcionesConfirmacion[0]);
+            if (opsConfirmacion[1] == 1) {
+                controladorRT.reservarTurno(estados);
+                if (opsConfirmacion[0] == 0) {
+                    controladorRT.generarEmail(interfazEmail);
+                }
             }
+
+            seleccionMenu = pantallaRT.solicitarOpcionContinuar();
         }
     }
 }
