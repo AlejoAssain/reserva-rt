@@ -71,6 +71,7 @@ public class ControladorReservaTurno {
     public void nuevaReservaDeTurno(PantallaReservaTurno pantalla, ArrayList<TipoRecursoTecnologico> tiposRT) {
         TipoRecursoTecnologico tRTSeleccionado = pantalla.solicitarSeleccionarTipoRT(tiposRT);
         this.setTipoRTSeleccionado(tRTSeleccionado);
+        System.out.println(tRTSeleccionado);
         System.out.println(this.tipoRTSeleccionado.getNombre());
     }
 
@@ -79,7 +80,7 @@ public class ControladorReservaTurno {
     }
 
     public Boolean buscarRTDisponible(ArrayList<CentroDeInvestigacion> centrosDeInvestigacion, Estado estadoActivo) {
-        ArrayList<CentroDeInvestigacion> ciConRTDisponibles = new ArrayList<>();
+        ArrayList<CentroDeInvestigacion> ciConRTDisp = new ArrayList<>();
 
         centrosDeInvestigacion.forEach((centroI) -> {
             ArrayList<RecursoTecnologico> recursoTecnologicosDisponibles = new ArrayList<>();
@@ -91,11 +92,11 @@ public class ControladorReservaTurno {
             });
             if (recursoTecnologicosDisponibles.size() > 0) {
                 centroI.setRecursosTecnologicos(recursoTecnologicosDisponibles);
-                ciConRTDisponibles.add(centroI);
+                ciConRTDisp.add(centroI);
             }
         });
 
-        this.ciConRTDisponibles = ciConRTDisponibles;
+        this.ciConRTDisponibles = ciConRTDisp;
 
 
         if (this.ciConRTDisponibles.size() > 0) {
@@ -150,7 +151,7 @@ public class ControladorReservaTurno {
         int indiceEstado = obtenerEstadoReservado(estados);
         if (indiceEstado != -1){
             Estado estadoReservado = estados.get(indiceEstado);
-            this.recursoTecnologicoSeleccionado.registrarReserva(this.turnoSeleccionado,estadoReservado,this.activaSesion.getCientificoEnSesion());
+            this.recursoTecnologicoSeleccionado.registrarReserva(this.turnoSeleccionado, estadoReservado, this.activaSesion.getCientificoEnSesion());
             this.pantalla.msg("Turno reservado con éxito");
         }else {
             this.pantalla.error("No se encontró el Estado Reservado para Turno");

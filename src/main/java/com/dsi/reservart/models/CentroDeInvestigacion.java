@@ -189,10 +189,15 @@ public class CentroDeInvestigacion {
     }
 
     public void setRecursoTecnologicoModificado(RecursoTecnologico recursoTecnologicoModificado) {
-        this.recursosTecnologicos.forEach((rt) -> {
-            if (rt.getNumeroRT() == recursoTecnologicoModificado.getNumeroRT()) {
-                rt = recursoTecnologicoModificado;
+//        this.recursosTecnologicos.forEach((rt) -> {
+//            if (rt.getNumeroRT() == recursoTecnologicoModificado.getNumeroRT()) {
+//                rt = recursoTecnologicoModificado;
+//            }
+//        });
+        for (int i = 0; i < this.recursosTecnologicos.size(); i++) {
+            if (this.recursosTecnologicos.get(i).getNumeroRT() == recursoTecnologicoModificado.getNumeroRT()) {
+                this.recursosTecnologicos.set(i, recursoTecnologicoModificado);
             }
-        });
+        }
     }
 }

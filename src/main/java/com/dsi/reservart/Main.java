@@ -199,9 +199,9 @@ public class Main {
                         }
                     }
 
-                    centrosDeInvestigacion.forEach((ci) -> {
-                        ci.setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
-                    });
+                    for (int i = 0; i < centrosDeInvestigacion.size(); i++) {
+                        centrosDeInvestigacion.get(i).setRecursoTecnologicoModificado(controladorRT.getRecursoTecnologicoSeleccionado());
+                    }
                 } else {
                     pantallaRT.error("\n\nEL TURNO SELECCIONADO NO ES UN TURNO DISPONIBLE");
                 }
