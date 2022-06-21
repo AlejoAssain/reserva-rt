@@ -37,7 +37,7 @@ public class ControladorReservaTurno {
     }
 
     public ArrayList<CentroDeInvestigacion> getCiConRTDisponibles() {
-        return ciConRTDisponibles;
+        return this.ciConRTDisponibles;
     }
 
     public void setCiConRTDisponibles(ArrayList<CentroDeInvestigacion> ciConRTDisponibles) {
@@ -71,39 +71,43 @@ public class ControladorReservaTurno {
     public void nuevaReservaDeTurno(PantallaReservaTurno pantalla, ArrayList<TipoRecursoTecnologico> tiposRT) {
         TipoRecursoTecnologico tRTSeleccionado = pantalla.solicitarSeleccionarTipoRT(tiposRT);
         this.setTipoRTSeleccionado(tRTSeleccionado);
-        System.out.println(tRTSeleccionado);
-        System.out.println(this.tipoRTSeleccionado.getNombre());
     }
 
     public String obtenerNombreUsuarioActivo() {
         return this.activaSesion.getNombreUsuarioActivo();
     }
 
-    public Boolean buscarRTDisponible(ArrayList<CentroDeInvestigacion> centrosDeInvestigacion, Estado estadoActivo) {
+    public void buscarRTDisponible(ArrayList<CentroDeInvestigacion> centrosDeInvestigacion, Estado estadoActivo) {
         ArrayList<CentroDeInvestigacion> ciConRTDisp = new ArrayList<>();
 
-        centrosDeInvestigacion.forEach((centroI) -> {
-            ArrayList<RecursoTecnologico> recursoTecnologicosDisponibles = new ArrayList<>();
+        for (int i = 0; i < centrosDeInvestigacion.size(); i++) {
+//            System.out.println("\nbuscando RT disponible de centro de investigacion " + centrosDeInvestigacion.get(i).getNombre());
 
-            centroI.recursosTecnologicos.forEach((recurso) -> {
+            ArrayList<RecursoTecnologico> recursoTecnologicosDisponibles = new ArrayList<>();
+            RecursoTecnologico recurso = null;
+
+            for (int j = 0; j < centrosDeInvestigacion.get(i).getRecursosTecnologicos().size(); j++) {
+                recurso = centrosDeInvestigacion.get(i).getRecursosTecnologicos().get(j);
+//                System.out.println("tipo seleccionado: " + this.getTipoRTSeleccionado().getNombre());
+//                System.out.println(recurso.esDeTipo(this.getTipoRTSeleccionado()));
+//                System.out.println(recurso.esDeTipo(this.tipoRTSeleccionado));
+//                System.out.println(recurso.getModelo().getNombre());
                 if (recurso.esDeTipo(this.tipoRTSeleccionado) && recurso.esActivo(estadoActivo)) {
                     recursoTecnologicosDisponibles.add(recurso);
                 }
-            });
-            if (recursoTecnologicosDisponibles.size() > 0) {
-                centroI.setRecursosTecnologicos(recursoTecnologicosDisponibles);
-                ciConRTDisp.add(centroI);
             }
-        });
 
-        this.ciConRTDisponibles = ciConRTDisp;
-
-
-        if (this.ciConRTDisponibles.size() > 0) {
-            return true;
+            if (recursoTecnologicosDisponibles.size() > 0) {
+                CentroDeInvestigacion copiaCIConRTsDisponibles = new CentroDeInvestigacion(
+                        centrosDeInvestigacion.get(i).getNombre(),
+                        centrosDeInvestigacion.get(i).getCientificos()
+                );
+                copiaCIConRTsDisponibles.setRecursosTecnologicos(recursoTecnologicosDisponibles);
+                ciConRTDisp.add(copiaCIConRTsDisponibles);
+            }
         }
 
-        return false;
+        this.ciConRTDisponibles = ciConRTDisp;
     }
 
     public void rtSeleccionado(RecursoTecnologico rt) {
@@ -132,7 +136,6 @@ public class ControladorReservaTurno {
                 return true;
             }
         }
-
         return false;
     }
 

@@ -72,7 +72,7 @@ public class PantallaReservaTurno {
     public Turno solicitarSeleccionarTurno(ArrayList<Turno> turnos) {
         System.out.println("\nSELECCIONE UN TURNO:");
         for (int i = 0; i < turnos.size(); i++) {
-            System.out.println("\n  TURNO" + (i + 1) + ": ");
+            System.out.println("\n  TURNO " + (i + 1) + ": ");
             System.out.println("    Para el día: " + turnos.get(i).getDiaSemana());
             System.out.println("    Fecha y hora de inicio:  " + turnos.get(i).getFechaHoraInicio());
             System.out.println("    Fecha y hora de finalización: " + turnos.get(i).getFechaHoraFin());

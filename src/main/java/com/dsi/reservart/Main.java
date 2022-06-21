@@ -169,6 +169,11 @@ public class Main {
         Integer seleccionMenu = pantallaRT.solicitarOpcionContinuar();
 
         while (seleccionMenu == 1) {
+
+//            System.out.println("cantidad de cis: " + centrosDeInvestigacion.size());
+//            System.out.println("cantidad de rt ci1: " + centrosDeInvestigacion.get(0).getRecursosTecnologicos().size());
+//            System.out.println("cantidad de rt ci2: " + centrosDeInvestigacion.get(1).getRecursosTecnologicos().size());
+
             pantallaRT.opReservaTurno(controladorRT, tiposRT);
 
             controladorRT.buscarRTDisponible(centrosDeInvestigacion, estados.get(0));
@@ -180,7 +185,7 @@ public class Main {
             Boolean comparacion = controladorRT.verificarCIDeCientificoYRT();
 
             if (!comparacion) {
-                pantallaRT.error("Usted no pertenece al mismo centro de investigacion que el recurso tecnologico...");
+                pantallaRT.msg("Se requiere definir tiempo de antelacion de reserva del centro...");
             } else {
                 Turno turnoSeleccionado = controladorRT.solicitarSeleccionTurno();
 
